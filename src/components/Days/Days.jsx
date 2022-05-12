@@ -43,17 +43,13 @@ function Days() {
                     </div>
                     <hr />
                 </div>
-
             </div>
-
             <Swiper
                 modules={[Navigation, Scrollbar, A11y]}
                 spaceBetween={1}
                 slidesPerView={5}
                 navigation
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
             >
                 {
                     products.map(product => (

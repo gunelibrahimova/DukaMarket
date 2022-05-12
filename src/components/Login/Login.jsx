@@ -87,13 +87,12 @@ const data = [
                 </div>
                 <div className="bottom">
                     <button>Login</button>
-                    <div class="form-check">
+                    <div className="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                         <label class="form-check-label" for="flexCheckDefault">
                             Remember me
                         </label>
                     </div>
-
                 </div>
                 <p>Lost your password?</p>
             </div>

@@ -1,0 +1,34 @@
+#here{
+    padding: 20px 0px;
+    border: 3px solid rgb(233, 233, 233);
+    .box{
+        position: relative;
+        button {
+            background-color: #FCBE00;
+            border: none;
+            position: absolute;
+            width: 20%;
+            top: 0%;
+            // right: 0%;
+            bottom: 0%;
+            color: white;
+            i{
+                font-size: 15px;
+            }
+        }
+        input{
+            padding: 20px;
+            border: none;
+            outline: none;
+            background-color: #F5F5F5;
+            width: 80%;
+        }
+    }
+    .sidebar-title{
+        font-size: 20px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #f3f3f3;
+        padding-bottom: 16px;
+        line-height: 1;
+    }
+}

@@ -1,0 +1,39 @@
+$base: #263c97;
+$blue: #16bcdc;
+$yellow: #fcbe00;
+$color: #fff;
+
+#instagram {
+  padding: 20px 0px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border: 3px solid rgb(233, 233, 233);
+  .sidebar-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f3f3f3;
+    padding-bottom: 16px;
+    line-height: 1;
+  }
+  .dktags {
+    .tag {
+      height: 30px;
+      text-align: center;
+      margin-left: 10px;
+      background: #f4f4f4;
+      color: #222;
+      font-size: 13px;
+      font-weight: bold;
+      display: inline-block;
+      padding: 6px 21px 13px 21px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      margin-right: 5px;
+      transition: 0.3s;
+      &:hover{
+          background-color: $yellow;
+          color: white;
+      }
+    }
+  }
+}

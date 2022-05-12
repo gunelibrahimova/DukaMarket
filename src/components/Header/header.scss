@@ -472,6 +472,7 @@ $color : #fff;
                     &.blog {
                         cursor: pointer;
 
+
                         .dropdown-menu2 {
                             position: absolute;
                             top: 100%;
@@ -490,6 +491,10 @@ $color : #fff;
                                 &:hover {
                                     color: $yellow;
                                     margin-left: 7px;
+                                }
+                                a{
+                                    text-decoration: none;
+                                    color: black;
                                 }
                             }
 

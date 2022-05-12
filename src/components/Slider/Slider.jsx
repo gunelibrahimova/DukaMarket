@@ -20,7 +20,7 @@ function Slider() {
     <div className="mySlider">
       <Swiper>
         {products.filter(x=>x.isSlider === true).map((item) => (
-          <SwiperSlide>
+          <SwiperSlide key={item.id}>
               <img
                   src={item.coverPhoto}
                   alt=""

@@ -1,0 +1,50 @@
+$base: #263C97;
+$blue: #16BCDC;
+$yellow: #FCBE00;
+$color : #fff;
+
+#popular{
+    padding: 20px 0px;
+    margin-top: 20px;
+    border: 3px solid rgb(233, 233, 233);
+    .sidebar-title{
+        font-size: 20px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #f3f3f3;
+        padding-bottom: 16px;
+        line-height: 1;
+    }
+    .apl{
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f3f3f3; 
+        .image{
+            img{
+                margin-right: 20px;
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+            }
+        }
+        .text{
+            .logistic{
+                font-size: 16px;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+                &:hover{
+                    color: $yellow;
+                }
+            }
+            .feed{
+                font-size: 14px;
+                color: #222;
+                i{
+                    margin-right: 10px;
+                }
+            }
+        }
+        
+    }
+}

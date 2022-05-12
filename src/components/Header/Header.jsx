@@ -262,7 +262,7 @@ function Header() {
                         <li className='blog'>BLOG
                             <div className="dropdown-menu2 row">
                                 <div>
-                                    <p>Blog</p>
+                                    <p><Link to='/blog'>Blog</Link> </p>
                                     <p>Blog detail</p>
                                 </div>
                             </div>
