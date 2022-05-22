@@ -3,17 +3,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../Slider/slider.scss";
 import { BASE_URL } from "./../../api/config";
+import axios from 'axios'
+import {GET} from "../../api/services";
 
+
+// product/productlist
 function Slider() {
   const [products, setProducts] = useState([]);
-  const getProducts = async () => {
-    await fetch(BASE_URL + "product/productlist")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.message));
-  };
+  const [dataa, setData] = useState([])
+
+
+  // const getProducts = async () => {
+  //   axios.get(BASE_URL + "product/productlist").then((res)=>{
+  //     setProducts(res.data.message)
+  //   })
+  // };
+  
+const getData = async () =>{
+  const res = await GET("product/productlist")
+
+  setProducts(res.message)
+}
 
   useEffect(() => {
-    getProducts();
+    getData();
   }, []);
 
   return (

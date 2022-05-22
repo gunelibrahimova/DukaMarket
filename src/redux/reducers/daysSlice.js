@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { GET } from "../../api/services";
 
 export const daysSlice = createSlice({
     name: 'days',
@@ -6,14 +7,16 @@ export const daysSlice = createSlice({
         data : []
     },
     reducers: {
-        days : (state , action) =>{
-            state.data = action.payload
+        daysData : (state , action) =>{
+
+            const product = GET("product/productlist")
+            state.data = product
         }
     }
 
 
 })
 
-export const {days} = daysSlice.actions
+export const {daysData} = daysSlice.actions
 
-export default daysSlice;
+export default daysSlice.reducer;

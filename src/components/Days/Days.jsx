@@ -8,21 +8,32 @@ import 'swiper/scss/pagination';
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import { Link } from 'react-router-dom';
-
+import { GET } from '../../api/services';
+import { useDispatch, useSelector } from 'react-redux';
+import {daysData} from '../../redux/reducers/daysSlice'
 
 function Days() {
 
 
 
+    const reduxData = useSelector((state) => state.days.data)
+    const dispatch = useDispatch()
+    
+    console.log(reduxData)
+
+
+
     const [products, setProducts] = useState([]);
-    const getProducts = async () => {
-        await fetch(BASE_URL + "product/productlist")
-            .then((res) => res.json())
-            .then((data) => setProducts(data.message));
+ 
+        const getProducts = async () =>{
+            const product = await GET("product/productlist")
+            setProducts(product.message)
+        
     };
 
     useEffect(() => {
         getProducts();
+        dispatch(daysData());
     }, []);
     return (
         <div className='myslider'>

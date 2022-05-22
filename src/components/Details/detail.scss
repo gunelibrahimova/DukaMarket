@@ -234,3 +234,145 @@ $turquoise: #16bcdc;
     }
 
 }
+
+#comment{
+    .top{
+        .five{
+            font-size: 100px;
+            color: #5aab19;
+            font-weight: 600;
+            line-height: 0.8;
+        }
+        .icons{
+            color: $yellow;
+            i{
+                margin-left: 3px;
+            }
+        }
+        .review{
+            font-size: 14px;
+            color: #747774;
+        }
+        .wireles{
+            font-size: 14px;
+            line-height: 24px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
+            span{
+                color: #0068CC;
+            }
+        }
+        .add{
+            .image{
+                img{
+                    border-radius: 50%;
+                    width : 60px;
+                    height: 60px;
+                }
+            }
+            .admin{
+                margin-left: 15px;
+                .iconss{
+                    color: $yellow;
+                    i{
+                        margin-left: 3px;
+                    }
+                }
+                .addreview{
+                    font-size: 14px;
+                    color: #666666;
+                    margin-left: 10px;
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+                    &:hover{
+                        color: $yellow;
+                    }
+                }
+                .date{
+                    margin-top: 10px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    span{
+                        color: #666666;
+                    }
+                }
+                .light{
+                    margin-top: 30px;
+                    font-size: 15px;
+                    color: #666;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .bottom{
+        .comment-title{
+            p{
+                font-size: 16px;
+            }
+        }
+        .comment-rating{
+            span{
+                font-size: 17px;
+                color: #454545;
+                margin-right: 5px;
+            }
+            .icons{
+                color: $yellow;
+                margin-left: 10px;
+                i{
+                    margin-left: 3px;
+                }
+            }
+        }
+        .comment-input-box{
+            margin-top: 20px;
+            .comment-input{
+                input{
+                    width: 100%;
+                    height: 50px;
+                    outline: none;
+                    border: 1px solid #e5e5e5;
+                    font-size: 15px;
+                    color: #151515;
+                    line-height: 48px;
+                    margin-bottom: 20px;
+                    padding: 20px;
+                }
+            }
+            textarea{
+                height: 130px;
+                width: 100%;
+                outline: none;
+                border: 1px solid #e5e5e5;
+                padding: 20px;
+                font-size: 15px;
+                color: #151515;
+                margin-bottom: 15px;
+            }
+            .comment-submit{
+                margin-top: 10px;
+                margin-bottom: 20px;
+                .cart-btn{
+                    font-size: 13px;
+                    padding: 9px 30px;
+                    background-color: #fcbe00;
+                    color: #222;
+                    display: inline-block;
+                    border: 1px solid transparent;
+                    text-transform: uppercase;
+                    text-align: center;
+                    font-weight: bold;
+                    transition: 0.3s ease-in-out;
+                    &:hover{
+                        background-color: transparent;
+                        border: 1px solid rgb(202, 202, 202);
+                    }
+                }
+            }
+        }
+    }
+}

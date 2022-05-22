@@ -4,12 +4,59 @@ import { BASE_URL } from '../../api/config';
 import '../Details/detail.scss'
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { FaStar } from 'react-icons/fa'
+
+const colors = {
+    orange: "#FFBA5A",
+    grey: "#a9a9a9"
+}
 
 function Detail() {
     const { id } = useParams()
     const [products, setProducts] = useState([]);
     const [count, setCounter] = useState(0);
-    const [photo, setPhoto] = useState([])
+    const [photo, setPhoto] = useState([]);
+    const [username, setUserName] = useState('');
+    const [review, setReview] = useState('');
+    const [email, setEmail] = useState('');
+    const [rating, setRating] = useState(0);
+
+    const stars = Array(5).fill(0);
+    const [currentValue, setCurrentValue] = useState(0);
+    const [hoverValue, setHoverValue] = useState(undefined);
+
+
+    const handleClick = value => {
+        setCurrentValue(value)
+    }
+
+    const handleMouseOver = value => {
+        setHoverValue(value)
+    }
+
+    const handleMouseLeave = value => {
+        setHoverValue(undefined)
+    }
+
+
+    const postComment = async () => {
+        fetch(BASE_URL + "Comment/addcomment", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({
+                "userName": username,
+                "userEmail": email,
+                "review": review,
+                "ratings": currentValue,
+                "productId": id
+            })
+        })
+    }
+
+
 
     const artir = () => {
         setCounter(count => count + 1);
@@ -127,32 +174,163 @@ function Detail() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div id='description'>
-            <div className="container">
-                <div className="top">
-                    <h5>Description</h5>
-                    <h5 className='afterLine'>Additional information</h5>
-                    <h5 className='afterLine'>Reviews (1)</h5>
-                </div>
-                <div className="bottom">
-                    <div className="text">
-                        <p>{products.description}</p>
+                <div className="container">
+                    <div className="top">
+                        <h5>Description</h5>
+                        <h5 className='afterLine'>Additional information</h5>
+                        <h5 className='afterLine'>Reviews (1)</h5>
                     </div>
+                    <div className="bottom">
+                        <div className="text">
+                            {/* <p>{products.description}</p> */}
+                        </div>
+                    </div>
+
+
+
                 </div>
-
-
 
             </div>
 
-        </div>
 
+            <div id='comment'>
+                <div className="container">
+                    <div className="top">
+                        <div className="row">
+                            <div className="col-lg-4">
+                                <h5 className='five'>
+                                    {
+                                        products.rating &&
+                                        
+                                            <div>
+                                                <h5 className='five'>{products.rating}</h5>
+                                            </div>
+                                        
+                                    }
+
+                                </h5>
+                                <span className="icons my-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </span> <br />
+                                <span className='review'>01 Review</span>
+                            </div>
+                            <div className="col-lg-8">
+                                <h6 className='wireles'>1 review for "<span>Wireless Bluetooth Over-Ear Headphones</span>"</h6>
+                                <div className="add">
+                                    <div className="d-flex">
+                                        <div className="image">
+                                            <img src="https://cdn.pixabay.com/photo/2021/05/09/10/51/dalmatian-6240486_960_720.jpg" alt="" />
+                                        </div>
+                                        <div className="admin">
+                                            <span className="iconss my-2">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </span>
+                                            <span className='addreview'>Add Review</span>
+                                            {
+                                                products.comments &&
+                                                products.comments.map(comment => (
+                                                    <div key={comment.userEmail}>
+                                                        <h6 className='date'> {comment.userName} – <span> May 27, 2021</span></h6>
+                                                        <p className='light'> {comment.review}</p>
+                                                        <p><span> {comment.ratings}</span></p>
+                                                        <hr />
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bottom">
+                        <div class="comment-title">
+                            <h3>Add a review</h3>
+                            <p>Your email address will not be published. Required fields are marked *</p>
+                        </div>
+                        <div class="comment-rating">
+                            <div className="d-flex">
+                                <span>Overall ratings</span>
+                                <div style={styles.containerr}>
+                                    <div style={styles.stars}>
+                                        {stars.map((_, index) => {
+                                            return (
+                                                <FaStar
+                                                    key={index}
+                                                    size={15}
+                                                    style={{
+                                                        marginRight: 10,
+                                                        cursor: "pointer"
+                                                    }}
+                                                    color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+                                                    onClick={() => handleClick(index + 1)}
+                                                    onMouseOver={() => handleMouseOver(index + 1)}
+                                                    onMouseLeave={handleMouseLeave}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-input-box">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="comment-input">
+                                        <input onChange={e => setUserName(e.target.value)} type="text" placeholder='Your Name' required />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="comment-input">
+                                        <input onChange={e => setEmail(e.target.value)} type="email" placeholder='Your Email' required />
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <textarea onChange={e => setReview(e.target.value)} placeholder="Your review" class="comment-input comment-textarea"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="comment-agree d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Save my name, email, and website in this browser for the next time I comment.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="comment-submit">
+                                        <button onClick={e => postComment()} type="submit" class="cart-btn">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
 
     )
 }
+
+const styles = {
+    containerr: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+    }
+}
+
 
 export default Detail
